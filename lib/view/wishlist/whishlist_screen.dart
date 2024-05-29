@@ -11,9 +11,9 @@ class WishlistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Wishlist',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20,color: Color(0xff213555),),),
+        title: Text('Wishlist',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20,color: Color(0xff436850),),),
         centerTitle: true,
-        backgroundColor: Color(0xffB8C1D9FF),
+        backgroundColor: Color(0xffADBC9F),
       ),
       body: Obx(() {
         if (wishlistController.wishlist.isEmpty) {

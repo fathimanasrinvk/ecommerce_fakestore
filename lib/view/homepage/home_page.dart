@@ -35,13 +35,13 @@ class _HomePageState extends State<HomePage> {
       builder: (context) {
         return AlertDialog(
           backgroundColor: Colors.white,
-          title: Text('Select Category'),
+          title: Center(child: Text('Select Category',style:TextStyle(fontWeight: FontWeight.bold, fontSize: 21, color: Color(0xff436850)),)),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               for (var category in ['All', 'Electronics', 'Jewelery', 'Men\'s Clothing', 'Women\'s Clothing'])
                 ListTile(
-                  title: Text(category),
+                  title: Center(child: Text(category,style: TextStyle( fontSize: 19, color: Color(0xff436850)),)),
                   onTap: () => filterProducts(category),
                 ),
             ],
@@ -57,21 +57,21 @@ class _HomePageState extends State<HomePage> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.0),
         child: AppBar(
-          backgroundColor: Color(0xffB8C1D9FF),
+          backgroundColor: Color(0xffADBC9F),
           title: Text(
             'Shop Your Favourites 🛒🛍️',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21, color: Color(0xff213555)),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21, color: Color(0xff436850)),
           ),
           centerTitle: true,
           actions: [
             IconButton(
-              icon: Icon(Icons.favorite, color: Color(0xff213555)),
+              icon: Icon(Icons.favorite, color: Color(0xff436850)),
               onPressed: () {
                 Get.to(WishlistScreen());
               },
             ),
             IconButton(
-              icon: Icon(Icons.filter_list, color: Color(0xff213555)),
+              icon: Icon(Icons.filter_list, color: Color(0xff436850)),
               onPressed: () => showFilterDialog(context),
             ),
           ],
