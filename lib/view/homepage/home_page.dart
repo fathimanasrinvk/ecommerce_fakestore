@@ -55,23 +55,23 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-      preferredSize: Size.fromHeight(60.0),
+        preferredSize: Size.fromHeight(60.0),
         child: AppBar(
           backgroundColor: Color(0xffB8C1D9FF),
           title: Text(
             'Shop Your Favourites 🛒🛍️',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21,color: Color(0xff213555)),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21, color: Color(0xff213555)),
           ),
           centerTitle: true,
           actions: [
             IconButton(
-              icon: Icon(Icons.favorite,color: Color(0xff213555)),
+              icon: Icon(Icons.favorite, color: Color(0xff213555)),
               onPressed: () {
                 Get.to(WishlistScreen());
               },
             ),
             IconButton(
-              icon: Icon(Icons.filter_list,color: Color(0xff213555)),
+              icon: Icon(Icons.filter_list, color: Color(0xff213555)),
               onPressed: () => showFilterDialog(context),
             ),
           ],

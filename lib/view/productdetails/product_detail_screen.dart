@@ -20,8 +20,8 @@ class ProductDetails extends StatelessWidget {
           },
           child: Icon(Icons.arrow_back_ios),
         ),
-        title: Text('Details'),
-        backgroundColor: Colors.blueGrey[600],
+        title: Text('Details',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20,color: Color(0xff213555),)),
+        backgroundColor: Color(0xffB8C1D9FF),
         centerTitle: true,
         actions: [
           Obx(() {
@@ -56,7 +56,7 @@ class ProductDetails extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fitHeight,
                     image: NetworkImage(productModel.image!),
                   ),
                 ),

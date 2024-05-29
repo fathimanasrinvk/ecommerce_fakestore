@@ -26,27 +26,32 @@ class ProductTile extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('\$${product.price}'),
-          ),
-          IconButton(
-            icon: Obx(() {
-              return Icon(
-                wishlistController.isInWishlist(product)
-                    ? Icons.favorite
-                    : Icons.favorite_border,
-                color: wishlistController.isInWishlist(product)
-                    ? Colors.red
-                    : null,
-              );
-            }),
-            onPressed: () {
-              if (wishlistController.isInWishlist(product)) {
-                wishlistController.removeFromWishlist(product);
-              } else {
-                wishlistController.addToWishlist(product);
-              }
-            },
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('\$${product.price}'),
+                IconButton(
+                  icon: Obx(() {
+                    return Icon(
+                      wishlistController.isInWishlist(product)
+                          ? Icons.favorite
+                          : Icons.favorite_border,
+                      color: wishlistController.isInWishlist(product)
+                          ? Colors.red
+                          : null,
+                    );
+                  }),
+                  onPressed: () {
+                    if (wishlistController.isInWishlist(product)) {
+                      wishlistController.removeFromWishlist(product);
+                    } else {
+                      wishlistController.addToWishlist(product);
+                    }
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),
