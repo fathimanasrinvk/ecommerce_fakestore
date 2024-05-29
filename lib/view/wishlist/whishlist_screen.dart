@@ -17,7 +17,7 @@ class WishlistScreen extends StatelessWidget {
       ),
       body: Obx(() {
         if (wishlistController.wishlist.isEmpty) {
-          return Center(child: Text('No items in the wishlist'));
+          return Center(child: Text('No items in the wishlist',style:TextStyle(fontWeight: FontWeight.bold, fontSize: 16,color: Color(0xff213555))));
         } else {
           return ListView.builder(
             itemCount: wishlistController.wishlist.length,

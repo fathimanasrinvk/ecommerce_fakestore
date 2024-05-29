@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   final WishlistController wishlistController = Get.put(WishlistController());
   String selectedCategory = 'All';
 
-  void _filterProducts(String category) {
+  void filterProducts(String category) {
     setState(() {
       selectedCategory = category;
     });
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
               for (var category in ['All', 'Electronics', 'Jewelery', 'Men\'s Clothing', 'Women\'s Clothing'])
                 ListTile(
                   title: Text(category),
-                  onTap: () => _filterProducts(category),
+                  onTap: () => filterProducts(category),
                 ),
             ],
           ),
