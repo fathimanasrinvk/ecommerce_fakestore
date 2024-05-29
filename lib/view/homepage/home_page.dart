@@ -17,48 +17,65 @@ class _HomePageState extends State<HomePage> {
   final WishlistController wishlistController = Get.put(WishlistController());
   String selectedCategory = 'All';
 
+  void _filterProducts(String category) {
+    setState(() {
+      selectedCategory = category;
+    });
+    if (selectedCategory == 'All') {
+      productController.readProducts();
+    } else {
+      productController.fetchProductsByCategory(selectedCategory.toLowerCase());
+    }
+    Navigator.pop(context);
+  }
+
+  void showFilterDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          title: Text('Select Category'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (var category in ['All', 'Electronics', 'Jewelery', 'Men\'s Clothing', 'Women\'s Clothing'])
+                ListTile(
+                  title: Text(category),
+                  onTap: () => _filterProducts(category),
+                ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xCC168A7D),
-        title: Text(
-          'Shop Your Favourites 🛒🛍️',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+      appBar: PreferredSize(
+      preferredSize: Size.fromHeight(60.0),
+        child: AppBar(
+          backgroundColor: Color(0xffB8C1D9FF),
+          title: Text(
+            'Shop Your Favourites 🛒🛍️',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21,color: Color(0xff213555)),
+          ),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.favorite,color: Color(0xff213555)),
+              onPressed: () {
+                Get.to(WishlistScreen());
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.filter_list,color: Color(0xff213555)),
+              onPressed: () => showFilterDialog(context),
+            ),
+          ],
         ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.favorite),
-            onPressed: () {
-              Get.to(WishlistScreen());
-            },
-          ),
-          PopupMenuButton<String>(
-            onSelected: (String result) {
-              setState(() {
-                selectedCategory = result;
-              });
-              if (selectedCategory == 'All') {
-                productController.readProducts();
-              } else {
-                productController.fetchProductsByCategory(selectedCategory.toLowerCase());
-              }
-            },
-            itemBuilder: (BuildContext context) => <String>[
-              'All',
-              'Electronics',
-              'Jewelery',
-              'Men\'s Clothing',
-              'Women\'s Clothing'
-            ].map((String category) {
-              return PopupMenuItem<String>(
-                value: category,
-                child: Text(category),
-              );
-            }).toList(),
-          ),
-        ],
       ),
       body: Column(
         children: [
